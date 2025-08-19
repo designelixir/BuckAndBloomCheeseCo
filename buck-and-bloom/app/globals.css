@@ -29,7 +29,7 @@ body {width: 100%;  margin: 0px}
 .flex-column {flex-direction: column;}
 .flex-wrap {flex-wrap: wrap}
 .no-flex-grow {flex: unset;}
-
+.full-width {width: 100%!important; flex-grow: 1;}
 .hidden-scrollbar {scrollbar-width: none; /* Firefox */ -ms-overflow-style: none; /* Internet Explorer 10+ */}
 .hidden-scrollbar::-webkit-scrollbar {display: none; /* Chrome, Safari, and Edge */}
 
@@ -53,11 +53,37 @@ h2 {
 
 #designElixirCredits {text-decoration: none; font-size: 12px; color: black;}
 
-.hero-container {border: 2px solid lime; background-color: #cff6ff;}
-.logo-container {background-image: url('/Tagline-Banner.svg'); border: 1px solid blue; background-repeat: no-repeat; max-height: 200px;}
-.mountains {background-image: url('/mtns.png'); width: 100%; background-position: center 100%; background-size: contain; border: 1px solid blue; background-repeat: no-repeat; height: 100vh;
+.hero {width: 100vw; height: 100vh; border: 2px solid lime; overflow: clip; background-color: #cff6ff}
+.sunburst-wrapper {z-index:2; border: 2px solid red; height: 40%;}
+.logo-banner-container {background-image: url('/Tagline-Banner.svg'); position: absolute; background-repeat: no-repeat; max-height: 200px;  background-position: center;}
+.hero-container {border: 2px solid lime;}
 
-    background-size: contain;}
+.mountains {background-image: url('/mtns.png'); padding: 2.5vw; width: 100%; background-position: center 130%; background-size: 1500px auto; border: 1px solid blue; background-repeat: no-repeat; min-height: 60vh;}
+
+.sunburst {width: 50vw; height: 50vw;  position: absolute; background-image: url('/sunburst.svg'); background-repeat: no-repeat; background-position: center; background-size: contain;}
+
+nav {background-image: url('/menu-bar.png'); width: 100vw; background-size: 100% auto; height: 120px; }
+
+
+@keyframes scaledown {
+  0% {transform: scale(0.75); opacity: 0;}
+  25% {transform: scale(1.5); opacity: 1;}
+  50% {transform: scale(1.5)}
+  100% {transform: scale(0);}
+}
+.scaledown-sunburst {animation: scaledown 4s forwards; pointer-events: none; animation-delay: 0.5s; opacity: 0; }
+
+@keyframes logo-enter {0% {transform: translateY(-5vh); opacity: 0;} 100% {transform: translateY(0vh); opacity: 1;}}
+.logo-enter {animation: logo-enter 0.5s linear; }
+
+@keyframes mtns-enter {
+  0% {transform: translateY(21vh); }
+  100% {transform: translateY(0vh)}
+}
+.mtns-enter {animation: mtns-enter 1.5s linear; z-index: 0;}
+
+@keyframes fade-in {from {opacity: 0;} to {opacity: 1}}
+.welcome-message {animation: fade-in 1s linear;}
 @media screen and (min-width: 480px) {
   body {
     
